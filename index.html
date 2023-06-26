@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="galeria.css">
+	<title>GitHub_Flow</title>
+	<script>
+		const queryString = window.location.search;
+		const urlParams = new URLSearchParams(queryString);
+		const varUser = urlParams.get('user');
+		
+	</script>
+</head>
+
+<body>
+	<form>
+				
+				<div id="avatar"> 
+					<img  class= "imagen" src ="img/GH.png" alt='imagen Avatar'/>`
+				</div>
+				<h1 id=nombre ></h1>
+				
+				<h3 class="title">Seguidores GitHub</h3>
+
+					<input 
+						type="text" 
+						class="userInput" 
+						id="usergh"				
+						placeholder="Buscar usuario"
+					/>
+
+					<select name="format" id="folow" class="searchButton">
+						<option selected disabled>Seleccione</option>
+						<option value="following">Following</option>
+						<option value="followers">Followers</option>
+					 </select>
+
+					<input 
+						type="button"
+						class="searchButton" 
+						value="Buscar" 
+						onclick="buscarGH()"
+					/>
+	</form>
+	<header>
+		<div id="contenido"></div>
+	</header>
+
+<script type="text/javascript">
+	function buscarGH(usergh) {
+		const sb = document.querySelector('#folow')
+		contenido.innerHTML = ' '
+		var usergh = document.getElementById("usergh");
+		var urlu = "https://api.github.com/users/" + usergh.value;
+		fetch(urlu, {method: 'GET'})
+    		.then(function(response) {
+        	if (!response.ok) {
+            	throw Error(response.statusText);
+        	}
+        	return response.json();
+    		})
+			.then(function(users) {
+			
+				avatar.innerHTML +=`<img  class = "imagen" src =${users.avatar_url} alt='imagen Avatar'/>`
+				nombre.innerHTML +=`<h3 class="title">  ${users.name} </h3>`	 	
+				nombre.innerHTML +=`<h3 class="title"> Followers:   ${users.followers}  Following:  ${users.following}  </h3>`	 	
+    		})
+			.catch(function(error) {
+				avatar.innerHTML +=`<img  class='imgerr' src='img/pare.jpg'>`
+				nombre.innerHTML +=`<h3 class='title'>  Usuário ${usergh.value} não encontrado, por favor tente outro </h3>`	
+    		});
+			
+		var url = "https://api.github.com/users/" + usergh.value + "/" + sb.value + "?per_page=100";
+		fetch(url, {method: 'GET'})
+			.then(function(response){
+				return response.json()
+			})
+			.then(function(data){
+				
+				 var cont = 0
+				 for(cont=0;cont<data.length;cont++){
+					contenido.innerHTML +=` 
+						<div class="galeria">
+							<div>
+								<a href='https://pfabreuave.github.io/api-github-javascript/?user=${data[cont].login}' target='_blank'>
+								<img src=${data[cont].avatar_url} alt=" "</a>
+							</div>
+							<div>
+								<a class="pie" href='https://pfabreuave.github.io/api-github-javascript/?user=${data[cont].login}' target="blank_">${data[cont].login}</a>
+							</div>
+ 						</div>`
+				}
+			})
+
+		avatar.innerHTML = ' '
+		nombre.innerHTML = ' '
+			
+		}
+
+		// function actualizar(){location.reload(true);}
+
+	  	document.getElementById('usergh').value = varUser;
+	 
+	  	if (varUser > " ") {
+			buscarGH();
+	  }
+	 
+</script>
+</html>

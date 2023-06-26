@@ -1,0 +1,95 @@
+
+body{ 
+	font-family: monospace;	
+	text-align: center;
+	display: flex;
+	flex-direction: column;	
+	background-color: #1f4242;
+	
+}
+
+.userInput {
+	flex: 1;
+	height: 32px;
+	padding: 0 40px;
+	background: #fff;
+	bottom: 0;
+	color: #000;
+	font-size: 18px;
+	border-radius: 25px;
+  }
+  
+.searchButton {
+	width: 150px;
+	height: 42px;
+	padding: 10px;
+	margin-left: 15px;
+	background-color:  #00ffff;
+	color: #000;
+	border: 0;
+	font-size: 20px;
+	font-weight: bold;
+	border-radius: 25px;
+	cursor: pointer;
+  }
+  
+.title {
+	color:  #00ffff;
+	font-size: 25px;
+	line-height: 1px;
+	
+  }
+
+  
+.imagen {
+	width: 20%;
+	border-radius: 100%;
+	display:block;
+	margin:auto;
+  } 
+ 
+.imgerr {
+	width: 250px; height: 250px;
+	border-radius: 100%;
+	display:block;
+	margin:auto;
+
+}
+
+h3{
+	color: white;
+	text-shadow: 1px 2px 2px black, 0 0 25px blue, 0 0 5px blue;
+	text-align: center;
+  }
+
+  div.galeria{
+	margin: 10px 20px;
+	box-shadow: 0 4px 8px 0 lightskyblue, 0 6px 20px 0 rgba(0,0,0,0.19);
+	float: left;
+	width: 150px;
+	position: relative;
+	
+  }
+
+  div.galeria img{
+	width: 100%;
+	height: auto;
+	
+  }
+
+ .pie{
+	color: white;
+	text-shadow: 1px 2px 2px black, 0 0 15px blue, 0 0 5px blue;
+	text-align: center;
+	font-size: 15px;
+  }
+
+  div{
+	
+	/* display: flex; */
+	justify-content: space-between;
+	flex-wrap: wrap;
+	/* font-size: 30px; */
+	/* text-align: center; */
+		
+}  
