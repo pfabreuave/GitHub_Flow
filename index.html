@@ -29,7 +29,7 @@
 						type="text" 
 						class="userInput" 
 						id="usergh"				
-						placeholder="Buscar usuario"
+						placeholder="Digite usuario aqui"
 					/>
 
 					<select name="format" id="folow" class="searchButton">
@@ -50,10 +50,19 @@
 	</header>
 
 <script type="text/javascript">
+	var sb = ' '
 	function buscarGH(usergh) {
-		console.log("sb.value  ")
-		const sb = document.querySelector('#folow')
+		if (document.querySelector('#folow') == 'Seleccione'){
+			// console.log("sb.value  " + sb.value)
+			sb = 'Followers'
+		}else {
+			sb = document.querySelector('#folow')
+			// console.log("sb.value  2 " + sb.value)
+		}
+		
+		
 		contenido.innerHTML = ' '
+		nombre.innerHTML = ' '
 		var usergh = document.getElementById("usergh");
 		var urlu = "https://api.github.com/users/" + usergh.value;
 		fetch(urlu, {method: 'GET'})
@@ -71,13 +80,16 @@
     		})
 			.catch(function(error) {
 				avatar.innerHTML +=`<img  class='imgerr' src='img/pare.jpg'>`
-				nombre.innerHTML +=`<h3 class='title'>  Usuário ${usergh.value} não encontrado, por favor tente outro </h3>`	
+				nombre.innerHTML +=`<h3 class='msgerr'>${usergh.value} não encontrado </h3>`	
     		});
 			
 		var url = "https://api.github.com/users/" + usergh.value + "/" + sb.value + "?per_page=100";
 		fetch(url, {method: 'GET'})
 			.then(function(response){
-				return response.json()
+				if (!response.ok) {
+            	throw Error(response.statusText);
+        	}
+			return response.json()
 			})
 			.then(function(data){
 				
@@ -95,6 +107,10 @@
  						</div>`
 				}
 			})
+			.catch(function(error) {
+				
+				nombre.innerHTML +=`<h3 class='msgerr'>Verifique su Seleccion</h3>`	
+    		});
 
 		avatar.innerHTML = ' '
 		nombre.innerHTML = ' '

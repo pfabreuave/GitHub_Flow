@@ -1,3 +1,18 @@
+@media (max-width: 375px) {
+   h1 {
+      font-size: 12px;
+    }
+    a  {
+      font-size: 8px;
+    }
+    div {
+      font-size: 8px;
+    }
+	header {
+		font-size: 8px;
+		flex-direction: column;
+	  }
+	}
 
 body{ 
 	font-family: monospace;	
@@ -36,9 +51,15 @@ body{
 .title {
 	color:  #00ffff;
 	font-size: 25px;
-	line-height: 1px;
-	
+	line-height: 1px;	
   }
+
+.msgerr {
+	color:  black;
+	font-size: 20px;
+	line-height: 2px;	
+  }
+
 
   
 .imagen {
@@ -58,7 +79,7 @@ body{
 
 h3{
 	color: white;
-	text-shadow: 1px 2px 2px black, 0 0 25px blue, 0 0 5px blue;
+	text-shadow: 1px 2px 2px black, 0 0 15px blue, 0 0 5px blue;
 	text-align: center;
   }
 
