@@ -52,15 +52,7 @@
 <script type="text/javascript">
 	var sb = ' '
 	function buscarGH(usergh) {
-		if (document.querySelector('#folow') == 'Seleccione'){
-			// console.log("sb.value  " + sb.value)
-			sb = 'Followers'
-		}else {
-			sb = document.querySelector('#folow')
-			// console.log("sb.value  2 " + sb.value)
-		}
-		
-		
+		sb = document.querySelector('#folow')
 		contenido.innerHTML = ' '
 		nombre.innerHTML = ' '
 		var usergh = document.getElementById("usergh");
@@ -82,8 +74,11 @@
 				avatar.innerHTML +=`<img  class='imgerr' src='img/pare.jpg'>`
 				nombre.innerHTML +=`<h3 class='msgerr'>${usergh.value} não encontrado </h3>`	
     		});
-			
-		var url = "https://api.github.com/users/" + usergh.value + "/" + sb.value + "?per_page=100";
+		if (sb.value != 'Seleccione'){	
+			var url = "https://api.github.com/users/" + usergh.value + "/" + sb.value + "?per_page=100";
+		}else {
+			var url = "https://api.github.com/users/" + usergh.value + "/followers" + "?per_page=100";
+		}	
 		fetch(url, {method: 'GET'})
 			.then(function(response){
 				if (!response.ok) {
