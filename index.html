@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="galeria.css">
 	<title>GitHub_Flow</title>
 	<script>
+
 		const queryString = window.location.search;
 		const urlParams = new URLSearchParams(queryString);
 		const varUser = urlParams.get('user');
@@ -50,6 +51,7 @@
 
 <script type="text/javascript">
 	function buscarGH(usergh) {
+		console.log("sb.value  ")
 		const sb = document.querySelector('#folow')
 		contenido.innerHTML = ' '
 		var usergh = document.getElementById("usergh");
@@ -84,12 +86,12 @@
 					contenido.innerHTML +=` 
 						<div class="galeria">
 							<div>
-								<a href='https://pfabreuave.github.io/api-github-javascript/?user=${data[cont].login}' target='_blank'>
+								<a href='https://pfabreuave.github.io/api-github-javascript/?user=${data[cont].login}' target='_blank' rel='noreferrer'>
 								<img src=${data[cont].avatar_url} alt=" "</a>
 							</div>
 							<div>
-								<a class="pie" href='https://pfabreuave.github.io/api-github-javascript/?user=${data[cont].login}' target="blank_">${data[cont].login}</a>
-							</div>
+								<a class="pie" href='https://pfabreuave.github.io/GitHub_Flow/?user=${data[cont].login}' target="blank_">${data[cont].login}</a>
+								</div>
  						</div>`
 				}
 			})
@@ -99,11 +101,12 @@
 			
 		}
 
-		// function actualizar(){location.reload(true);}
+		function actualizar(){location.reload(true);}
 
 	  	document.getElementById('usergh').value = varUser;
 	 
 	  	if (varUser > " ") {
+			
 			buscarGH();
 	  }
 	 
