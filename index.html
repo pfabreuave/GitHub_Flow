@@ -68,7 +68,7 @@
 			
 				avatar.innerHTML +=`<img  class = "imagen" src =${users.avatar_url} alt='imagen Avatar'/>`
 				nombre.innerHTML +=`<h3 class="title">  ${users.name} </h3>`	 	
-				nombre.innerHTML +=`<h3 class="title"> Followers:   ${users.followers}  Following:  ${users.following}  </h3>`	 	
+				nombre.innerHTML +=`<p class="title_2"> Followers:   ${users.followers}  Following:  ${users.following}  </p>`	 	
     		})
 			.catch(function(error) {
 				avatar.innerHTML +=`<img  class='imgerr' src='img/pare.jpg'>`
